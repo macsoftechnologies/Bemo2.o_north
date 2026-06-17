@@ -1,0 +1,1353 @@
+.pdf-card {
+  overflow: hidden;
+}
+
+.pdf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.pdf-header h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.pdf-badge {
+  background: #2563eb;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.pdf-frame {
+  width: 100%;
+  height: calc(100vh - 260px);
+  border: none;
+  display: block;
+}
+
+.pdf-footer {
+  padding: 20px 24px;
+  justify-content: flex-end;
+}
+
+.floor-plan-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+}
+
+.zone-overlay {
+  position: absolute;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.zone-overlay:hover {
+  /* background: rgba(37, 99, 235, 0.25); */
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-color: #2563eb;
+}
+
+.zone-overlay span {
+  position: absolute;
+  top: -28px;
+  left: 0;
+  background: #2563eb;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.zone-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .8);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.zone-modal-content {
+  width: 90%;
+  max-width: 1400px;
+  height: 90vh;
+  background: #111827;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+.zone-modal-header {
+  height: 65px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.zone-modal-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.close-btn {
+  border: none;
+  background: transparent;
+  font-size: 32px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: color 0.15s ease;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #fff;
+}
+
+.zone-pdf-container {
+  position: relative;
+  width: 100%;
+  height: 65vh;
+}
+
+.zone-pdf {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.room-overlay {
+  position: absolute;
+  z-index: 10000;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  border: none !important;
+  background: transparent !important;
+}
+
+.room-overlay-checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  outline: none !important;
+  border-radius: 6px;
+  border: 2px solid #3b82f6;
+  background-color: rgba(17, 24, 39, 0.95);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-overlay-checkbox::after {
+  content: '';
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(-45deg) scale(0);
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: -2px;
+}
+
+.room-overlay-checkbox:hover {
+  border-color: #60a5fa;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.room-overlay.selected .room-overlay-checkbox {
+  border-color: #10b981;
+  background-color: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.room-overlay.selected .room-overlay-checkbox::after {
+  transform: rotate(-45deg) scale(1);
+}
+
+.room-badge {
+  display: none;
+  /* Hide old non-checkbox badge */
+}
+
+.room-overlay-label {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  transform: translateX(-50%) scale(0.95);
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #2563eb;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.15s ease;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10000;
+}
+
+.room-overlay.selected .room-overlay-label {
+  background-color: #10b981;
+}
+
+.room-overlay:hover .room-overlay-label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) scale(1.05);
+}
+
+.room-list {
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #1f2937;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.room-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #111827;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.room-item:hover {
+  background: #252f3e;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.room-item.checked {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: #10b981;
+  color: #4ade80;
+}
+
+.room-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #10b981;
+}
+
+.room-item-label {
+  font-size: 14px;
+}
+
+/* MU90.0 Room Overlays Positioning */
+.MU90_GF-ZoneMU90_0A-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 56%;
+  left: 53%;
+}
+
+.MU90_GF-ZoneMU90_0B-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 41%;
+  left: 27%;
+}
+
+.MU90_GF-ZoneMU90_0B-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 39%;
+  right: 28%;
+}
+
+.MU90_GF-ZoneMU90_0B-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 20%;
+  right: 34%;
+}
+
+.MU90_GF-ZoneMU90_0C-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 26%;
+  left: 45%;
+}
+
+.MU90_GF-ZoneMU90_0C-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 60%;
+  left: 47%;
+}
+
+.MU90_GF-ZoneMU90_0C-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 11%;
+  left: 47%;
+}
+
+.MU90_GF-ZoneMU90_0D-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 26%;
+  right: 17%;
+}
+
+.MU90_GF-ZoneMU90_0D-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 45%;
+  left: 10%;
+}
+
+.MU90_GF-ZoneMU90_0D-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 57%;
+  left: 41%;
+}
+
+.MU90_GF-ZoneMU90_0D-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 62%;
+  right: 21%;
+}
+
+.MU90_GF-ZoneMU90_0D-5 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 15%;
+  left: 9%;
+}
+
+.MU90_GF-ZoneMU90_0E-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 24%;
+  left: 50%;
+}
+
+.MU90_GF-ZoneMU90_0E-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 59%;
+  left: 50%;
+}
+
+.MU90_GF-ZoneMU90_0E-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 15%;
+  left: 50%;
+}
+
+.MU90_GF-ZoneMU90_0F1-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 22%;
+  left: 42%;
+}
+
+.MU90_GF-ZoneMU90_0F1-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 54%;
+  left: 26%;
+}
+
+.MU90_GF-ZoneMU90_0F1-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 15%;
+  left: 27%;
+}
+
+.MU90_GF-ZoneMU90_0F1-4 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 20%;
+  left: 57%;
+}
+
+.MU90_GF-ZoneMU90_0F2-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 5%;
+  left: 18%;
+}
+
+.MU90_GF-ZoneMU90_0F2-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 6%;
+  left: 40%;
+}
+
+.MU90_GF-ZoneMU90_0F2-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 19%;
+  left: 55%;
+}
+
+.MU90_GF-ZoneMU90_0F2-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 6%;
+  right: 30%;
+}
+
+.MU90_GF-ZoneMU90_0F2-5 {
+  position: absolute;
+  z-index: 9999;
+  top: 6%;
+  right: 14%;
+}
+
+.MU90_GF-ZoneMU90_0F2-6 {
+  position: absolute;
+  z-index: 9999;
+  top: 37%;
+  left: 13%;
+}
+
+.MU90_GF-ZoneMU90_0F2-7 {
+  position: absolute;
+  z-index: 9999;
+  top: 35%;
+  right: 35%;
+}
+
+.MU90_GF-ZoneMU90_0F2-8 {
+  position: absolute;
+  z-index: 9999;
+  top: 51%;
+  left: 22%;
+}
+
+.MU90_GF-ZoneMU90_0F2-9 {
+  position: absolute;
+  z-index: 9999;
+  top: 51%;
+  left: 47%;
+}
+
+.MU90_GF-ZoneMU90_0F2-10 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 17%;
+  left: 27%;
+}
+
+.MU90_GF-ZoneMU90_0I-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 18%;
+  left: 35%;
+}
+
+.MU90_GF-ZoneMU90_0I-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 51%;
+  left: 50%;
+}
+
+.MU90_GF-ZoneMU90_0I-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 29%;
+  left: 50%;
+}
+
+.MU90_GF-ZoneMU90_0I-4 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 7%;
+  left: 49%;
+}
+
+.MU90_GF-ZoneMU90_0K-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 9%;
+  left: 20%;
+}
+
+.MU90_GF-ZoneMU90_0K-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 59%;
+  left: 34%;
+}
+
+.MU90_GF-ZoneMU90_0K-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 15%;
+  right: 18%;
+}
+
+/* Premium Form Styles */
+.premium-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+.form-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.form-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 10px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.df-readonly {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: #9ca3af !important;
+  cursor: not-allowed;
+}
+
+.checkbox-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  color: #fff;
+  font-size: 14px;
+}
+
+.selected-rooms-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.room-tag {
+  background: #2563eb;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.no-rooms-tag {
+  color: #9ca3af;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* Checklist Styling */
+.checklist-item {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.checklist-item:last-child {
+  border-bottom: none;
+}
+
+.checklist-question {
+  color: #e5e7eb;
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+}
+
+.radio-group label {
+  color: #fff;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+  accent-color: #10b981;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.conditional-fields-block {
+  margin-top: 16px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-top: 12px;
+}
+
+.df-select-multiple {
+  height: 120px;
+}
+
+/* Custom Checkbox Styles */
+.custom-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+  padding: 6px 0;
+}
+
+.custom-checkbox-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  background-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.custom-checkbox-input:checked {
+  background-color: #10b981;
+  border-color: #10b981;
+}
+
+.custom-checkbox-input:checked::after {
+  content: '✓';
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Add Files Button & File List Styles */
+.logo-btn-sty {
+  background: #10183b;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.logo-btn-sty:hover {
+  background: #17245c;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.file-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #cbd5e1;
+  font-size: 14px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.file-remove-btn {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.file-remove-btn:hover {
+  color: #f87171;
+}
+
+/* Mandatory PPE Row Styles */
+.ppe-mandatory-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 100px;
+  background: #0e163b;
+  /* White background */
+  padding: 16px 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  /* Light grey border */
+}
+
+.ppe-mandatory-icon:hover {
+  transform: scale(1.08);
+}
+
+/* MU90.1, MU90.2, MU90.R Room Overlays Positioning */
+.MU90_1_VB-ZoneMU90_1BN-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 0%;
+  left: 17%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 13%;
+  left: 6%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 21%;
+  left: 24%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 28%;
+  left: 46%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-5 {
+  position: absolute;
+  z-index: 9999;
+  top: 38%;
+  left: 24%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-6 {
+  position: absolute;
+  z-index: 9999;
+  top: 43%;
+  left: 8%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-7 {
+  position: absolute;
+  z-index: 9999;
+  top: 53%;
+  left: 24%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-8 {
+  position: absolute;
+  z-index: 9999;
+  top: 59%;
+  left: 5%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-9 {
+  position: absolute;
+  z-index: 9999;
+  top: 58%;
+  right: 31%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-10 {
+  position: absolute;
+  z-index: 9999;
+  right: 68%;
+  bottom: 27%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-11 {
+  position: absolute;
+  z-index: 9999;
+  top: 73%;
+  right: 18%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-12 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 10%;
+  right: 42%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-13 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 14%;
+  left: 3%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-14 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 14%;
+  left: 16%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-15 {
+  position: absolute;
+  z-index: 9999;
+  right: 68%;
+  bottom: 27%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-16 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 7%;
+  left: 3%;
+}
+
+.MU90_1_VB-ZoneMU90_1BN-17 {
+  position: absolute;
+  z-index: 9999;
+  bottom: -1%;
+  left: 3%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 3%;
+  left: 51%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 11%;
+  left: 7%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 15%;
+  left: 19%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 7%;
+  left: 32%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-5 {
+  position: absolute;
+  z-index: 9999;
+  top: 15%;
+  left: 44%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-6 {
+  position: absolute;
+  z-index: 9999;
+  top: 14%;
+  left: 64%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-7 {
+  position: absolute;
+  z-index: 9999;
+  top: 32%;
+  left: 19%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-8 {
+  position: absolute;
+  z-index: 9999;
+  top: 47%;
+  left: 19%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-9 {
+  position: absolute;
+  z-index: 9999;
+  top: 49%;
+  right: 33%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-10 {
+  position: absolute;
+  z-index: 9999;
+  top: 49%;
+  right: 9%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-11 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 24%;
+  left: 9%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-12 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 26%;
+  left: 43%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-13 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 27%;
+  left: 67%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-14 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 15%;
+  left: 20%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-15 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 15%;
+  left: 43%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-16 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 8%;
+  left: 43%;
+}
+
+.MU90_1_VB-ZoneMU90_1BS-17 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 1%;
+  left: 43%;
+}
+
+.MU90_1_VB-ZoneMU90_1C-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 19%;
+  left: 45%;
+}
+
+.MU90_1_VB-ZoneMU90_1C2-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 32%;
+  left: 28%;
+}
+
+.MU90_1_VB-ZoneMU90_1D-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 69%;
+  left: 47%;
+}
+
+.MU90_1_VB-ZoneMU90_1E-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 12%;
+  left: 43%;
+}
+
+.MU90_1_VB-ZoneMU90_1F-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 64%;
+  left: 22%;
+}
+
+.MU90_1_VB-ZoneMU90_1G-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 12%;
+  left: 22%;
+}
+
+.MU90_1_VB-ZoneMU90_1G-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 42%;
+  left: 26%;
+}
+
+.MU90_1_VB-ZoneMU90_1G-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 66%;
+  left: 26%;
+}
+
+.MU90_1_VB-ZoneMU90_1H-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 25%;
+  left: 23%;
+}
+
+.MU90_1_VB-ZoneMU90_1H-2 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 24%;
+  left: 24%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 0%;
+  right: 25%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 7%;
+  right: 36%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 14%;
+  right: 26%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 24%;
+  right: 29%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-5 {
+  position: absolute;
+  z-index: 9999;
+  top: 16%;
+  left: 18%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-6 {
+  position: absolute;
+  z-index: 9999;
+  top: 11%;
+  right: 48%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-7 {
+  position: absolute;
+  z-index: 9999;
+  top: 4%;
+  right: 12%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-8 {
+  position: absolute;
+  z-index: 9999;
+  top: 24%;
+  right: 12%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-9 {
+  position: absolute;
+  z-index: 9999;
+  top: 27%;
+  left: 15%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-10 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 51%;
+  right: 30%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-11 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 41%;
+  right: 30%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-12 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 29%;
+  right: 30%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-13 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 43%;
+  left: 38%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-14 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 17%;
+  left: 13%;
+}
+
+.MU90_1_VB-ZoneMU90_1I-15 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 4%;
+  right: 23%;
+}
+
+.MU90_1_VB-ZoneMU90_1K-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 2%;
+  right: 20%;
+}
+
+.MU90_1_VB-ZoneMU90_1K-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 22%;
+  left: 7%;
+}
+
+.MU90_1_VB-ZoneMU90_1K-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 26.5%;
+  left: 36%;
+}
+
+.MU90_1_VB-ZoneMU90_1K-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 50.3%;
+  left: 36%;
+}
+
+.MU90_1_VB-ZoneMU90_1K-5 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 14%;
+  left: 36%;
+}
+
+.MU90_1_VB-ZoneMU90_1K-6 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 10%;
+  left: 36%;
+}
+
+.MU90_1_VB-ZoneMU90_1K-7 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 8.5%;
+  left: 47%;
+}
+
+.MU90_1_VB-ZoneMU90_1L-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 16%;
+  right: 52%;
+}
+
+.MU90_1_VB-ZoneMU90_1L-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 45%;
+  right: 35%;
+}
+
+.MU90_1_VB-ZoneMU90_1L-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 50%;
+  left: 10%;
+}
+
+.MU90_1_VB-ZoneMU90_1L-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 57%;
+  left: 11%;
+}
+
+.MU90_1_VB-ZoneMU90_1L-5 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 17%;
+  left: 11%;
+}
+
+.MU90_1_VB-ZoneMU90_1L-6 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 26%;
+  right: 20%;
+}
+
+.MU90_1_VB-ZoneMU90_1L-7 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 1%;
+  right: 57%;
+}
+
+.MU90_1_VB-ZoneMU90_1M-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 47%;
+  right: 58%;
+}
+
+.MU90_1_VB-ZoneMU90_2A-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 5%;
+  left: 9%;
+}
+
+.MU90_1_VB-ZoneMU90_2A-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 59%;
+  left: 49%;
+}
+
+.MU90_1_VB-ZoneMU90_2A-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 12%;
+  left: 12%;
+}
+
+.MU90_1_VB-ZoneMU90_2A-4 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 3%;
+  left: 13%;
+}
+
+.MU90_1_VB-ZoneMU90_2A-5 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 3%;
+  left: 45%;
+}
+
+.MU90_1_VB-ZoneMU90_RA-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 56%;
+  left: 49%;
+}
+
+.MU90_1_VB-ZoneMU90_R_BW-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 22%;
+  left: 26%;
+}
+
+.MU90_1_VB-ZoneMU90_R_BE-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 21.5%;
+  right: 33%;
+}
