@@ -272,258 +272,6 @@
   font-size: 14px;
 }
 
-/* MU90.0 Room Overlays Positioning */
-.MU90_GF-ZoneMU90_0A-1 {
-  position: absolute;
-  z-index: 9999;
-  top: 56%;
-  left: 53%;
-}
-
-.MU90_GF-ZoneMU90_0B-1 {
-  position: absolute;
-  z-index: 9999;
-  top: 41%;
-  left: 27%;
-}
-
-.MU90_GF-ZoneMU90_0B-2 {
-  position: absolute;
-  z-index: 9999;
-  top: 39%;
-  right: 28%;
-}
-
-.MU90_GF-ZoneMU90_0B-3 {
-  position: absolute;
-  z-index: 9999;
-  bottom: 20%;
-  right: 34%;
-}
-
-.MU90_GF-ZoneMU90_0C-1 {
-  position: absolute;
-  z-index: 9999;
-  top: 26%;
-  left: 45%;
-}
-
-.MU90_GF-ZoneMU90_0C-2 {
-  position: absolute;
-  z-index: 9999;
-  top: 60%;
-  left: 47%;
-}
-
-.MU90_GF-ZoneMU90_0C-3 {
-  position: absolute;
-  z-index: 9999;
-  bottom: 11%;
-  left: 47%;
-}
-
-.MU90_GF-ZoneMU90_0D-1 {
-  position: absolute;
-  z-index: 9999;
-  top: 26%;
-  right: 17%;
-}
-
-.MU90_GF-ZoneMU90_0D-2 {
-  position: absolute;
-  z-index: 9999;
-  top: 45%;
-  left: 10%;
-}
-
-.MU90_GF-ZoneMU90_0D-3 {
-  position: absolute;
-  z-index: 9999;
-  top: 57%;
-  left: 41%;
-}
-
-.MU90_GF-ZoneMU90_0D-4 {
-  position: absolute;
-  z-index: 9999;
-  top: 62%;
-  right: 21%;
-}
-
-.MU90_GF-ZoneMU90_0D-5 {
-  position: absolute;
-  z-index: 9999;
-  bottom: 15%;
-  left: 9%;
-}
-
-.MU90_GF-ZoneMU90_0E-1 {
-  position: absolute;
-  z-index: 9999;
-  top: 24%;
-  left: 50%;
-}
-
-.MU90_GF-ZoneMU90_0E-2 {
-  position: absolute;
-  z-index: 9999;
-  top: 59%;
-  left: 50%;
-}
-
-.MU90_GF-ZoneMU90_0E-3 {
-  position: absolute;
-  z-index: 9999;
-  bottom: 15%;
-  left: 50%;
-}
-
-.MU90_GF-ZoneMU90_0F1-1 {
-  position: absolute;
-  z-index: 9999;
-  top: 22%;
-  left: 42%;
-}
-
-.MU90_GF-ZoneMU90_0F1-2 {
-  position: absolute;
-  z-index: 9999;
-  top: 54%;
-  left: 26%;
-}
-
-.MU90_GF-ZoneMU90_0F1-3 {
-  position: absolute;
-  z-index: 9999;
-  bottom: 15%;
-  left: 27%;
-}
-
-.MU90_GF-ZoneMU90_0F1-4 {
-  position: absolute;
-  z-index: 9999;
-  bottom: 20%;
-  left: 57%;
-}
-
-.MU90_GF-ZoneMU90_0F2-1 {
-  position: absolute;
-  z-index: 9999;
-  top: 5%;
-  left: 18%;
-}
-
-.MU90_GF-ZoneMU90_0F2-2 {
-  position: absolute;
-  z-index: 9999;
-  top: 6%;
-  left: 40%;
-}
-
-.MU90_GF-ZoneMU90_0F2-3 {
-  position: absolute;
-  z-index: 9999;
-  top: 19%;
-  left: 55%;
-}
-
-.MU90_GF-ZoneMU90_0F2-4 {
-  position: absolute;
-  z-index: 9999;
-  top: 6%;
-  right: 30%;
-}
-
-.MU90_GF-ZoneMU90_0F2-5 {
-  position: absolute;
-  z-index: 9999;
-  top: 6%;
-  right: 14%;
-}
-
-.MU90_GF-ZoneMU90_0F2-6 {
-  position: absolute;
-  z-index: 9999;
-  top: 37%;
-  left: 13%;
-}
-
-.MU90_GF-ZoneMU90_0F2-7 {
-  position: absolute;
-  z-index: 9999;
-  top: 35%;
-  right: 35%;
-}
-
-.MU90_GF-ZoneMU90_0F2-8 {
-  position: absolute;
-  z-index: 9999;
-  top: 51%;
-  left: 22%;
-}
-
-.MU90_GF-ZoneMU90_0F2-9 {
-  position: absolute;
-  z-index: 9999;
-  top: 51%;
-  left: 47%;
-}
-
-.MU90_GF-ZoneMU90_0F2-10 {
-  position: absolute;
-  z-index: 9999;
-  bottom: 17%;
-  left: 27%;
-}
-
-.MU90_GF-ZoneMU90_0I-1 {
-  position: absolute;
-  z-index: 9999;
-  top: 18%;
-  left: 35%;
-}
-
-.MU90_GF-ZoneMU90_0I-2 {
-  position: absolute;
-  z-index: 9999;
-  top: 51%;
-  left: 50%;
-}
-
-.MU90_GF-ZoneMU90_0I-3 {
-  position: absolute;
-  z-index: 9999;
-  bottom: 29%;
-  left: 50%;
-}
-
-.MU90_GF-ZoneMU90_0I-4 {
-  position: absolute;
-  z-index: 9999;
-  bottom: 7%;
-  left: 49%;
-}
-
-.MU90_GF-ZoneMU90_0K-1 {
-  position: absolute;
-  z-index: 9999;
-  top: 9%;
-  left: 20%;
-}
-
-.MU90_GF-ZoneMU90_0K-2 {
-  position: absolute;
-  z-index: 9999;
-  top: 59%;
-  left: 34%;
-}
-
-.MU90_GF-ZoneMU90_0K-3 {
-  position: absolute;
-  z-index: 9999;
-  bottom: 15%;
-  right: 18%;
-}
 
 /* Premium Form Styles */
 .premium-form-container {
@@ -775,6 +523,260 @@
 
 .ppe-mandatory-icon:hover {
   transform: scale(1.08);
+}
+
+
+/* MU90.0 Room Overlays Positioning */
+.MU90_GF-ZoneMU90_0A-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 56%;
+  left: 53%;
+}
+
+.MU90_GF-ZoneMU90_0B-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 41%;
+  left: 27%;
+}
+
+.MU90_GF-ZoneMU90_0B-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 39%;
+  right: 28%;
+}
+
+.MU90_GF-ZoneMU90_0B-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 20%;
+  right: 34%;
+}
+
+.MU90_GF-ZoneMU90_0C-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 26%;
+  left: 45%;
+}
+
+.MU90_GF-ZoneMU90_0C-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 60%;
+  left: 47%;
+}
+
+.MU90_GF-ZoneMU90_0C-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 11%;
+  left: 47%;
+}
+
+.MU90_GF-ZoneMU90_0D-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 26%;
+  right: 17%;
+}
+
+.MU90_GF-ZoneMU90_0D-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 45%;
+  left: 10%;
+}
+
+.MU90_GF-ZoneMU90_0D-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 57%;
+  left: 41%;
+}
+
+.MU90_GF-ZoneMU90_0D-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 62%;
+  right: 21%;
+}
+
+.MU90_GF-ZoneMU90_0D-5 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 15%;
+  left: 9%;
+}
+
+.MU90_GF-ZoneMU90_0E-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 24%;
+  left: 50%;
+}
+
+.MU90_GF-ZoneMU90_0E-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 59%;
+  left: 50%;
+}
+
+.MU90_GF-ZoneMU90_0E-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 15%;
+  left: 50%;
+}
+
+.MU90_GF-ZoneMU90_0F1-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 22%;
+  left: 42%;
+}
+
+.MU90_GF-ZoneMU90_0F1-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 54%;
+  left: 26%;
+}
+
+.MU90_GF-ZoneMU90_0F1-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 15%;
+  left: 27%;
+}
+
+.MU90_GF-ZoneMU90_0F1-4 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 20%;
+  left: 57%;
+}
+
+.MU90_GF-ZoneMU90_0F2-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 5%;
+  left: 18%;
+}
+
+.MU90_GF-ZoneMU90_0F2-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 6%;
+  left: 40%;
+}
+
+.MU90_GF-ZoneMU90_0F2-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 19%;
+  left: 55%;
+}
+
+.MU90_GF-ZoneMU90_0F2-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 6%;
+  right: 30%;
+}
+
+.MU90_GF-ZoneMU90_0F2-5 {
+  position: absolute;
+  z-index: 9999;
+  top: 6%;
+  right: 14%;
+}
+
+.MU90_GF-ZoneMU90_0F2-6 {
+  position: absolute;
+  z-index: 9999;
+  top: 37%;
+  left: 13%;
+}
+
+.MU90_GF-ZoneMU90_0F2-7 {
+  position: absolute;
+  z-index: 9999;
+  top: 35%;
+  right: 35%;
+}
+
+.MU90_GF-ZoneMU90_0F2-8 {
+  position: absolute;
+  z-index: 9999;
+  top: 51%;
+  left: 22%;
+}
+
+.MU90_GF-ZoneMU90_0F2-9 {
+  position: absolute;
+  z-index: 9999;
+  top: 51%;
+  left: 47%;
+}
+
+.MU90_GF-ZoneMU90_0F2-10 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 17%;
+  left: 27%;
+}
+
+.MU90_GF-ZoneMU90_0I-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 18%;
+  left: 35%;
+}
+
+.MU90_GF-ZoneMU90_0I-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 51%;
+  left: 50%;
+}
+
+.MU90_GF-ZoneMU90_0I-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 29%;
+  left: 50%;
+}
+
+.MU90_GF-ZoneMU90_0I-4 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 7%;
+  left: 49%;
+}
+
+.MU90_GF-ZoneMU90_0K-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 9%;
+  left: 20%;
+}
+
+.MU90_GF-ZoneMU90_0K-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 59%;
+  left: 34%;
+}
+
+.MU90_GF-ZoneMU90_0K-3 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 15%;
+  right: 18%;
 }
 
 /* MU90.1, MU90.2, MU90.R Room Overlays Positioning */
@@ -1380,14 +1382,14 @@
   position: absolute;
   z-index: 9999;
   top: 58%;
-  right: -7%;
+  right: 7%;
 }
 
 .CT_Dark_Red_Zones-4 {
   position: absolute;
   z-index: 9999;
   top: 39%;
-  right: -59%;
+  right: 59%;
 }
 
 .CT_Dark_Cool_tower {
@@ -1784,10 +1786,502 @@
 
 /* / end of Area MT-MS / */
 
+/* / start of Area MU / */
 
+.MU90_Purple_Zones-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 7%;
+  left: 21%;
+}
 
+.MU90_Purple_Zones-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 22%;
+  left: 86%;
+}
 
+.MU90_Purple_Zones-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 24%;
+  left: 2%;
+}
 
+.MU90_Purple_Zones-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 49%;
+  left: 31%;
+}
+
+.MU90_Purple_Zones-5 {
+  position: absolute;
+  z-index: 9999;
+  top: 82%;
+  left: 86%;
+}
+
+.MU90_Purple_Zones-6 {
+  position: absolute;
+  z-index: 9999;
+  top: 94%;
+  left: 23%;
+}
+
+.MU90_Purple_Zones-7 {
+  position: absolute;
+  z-index: 9999;
+  top: 65%;
+  left: 2%;
+}
+
+/* / end of Area MU / */
+
+/* / start of Welfare / */
+
+.Welfare_Grey_Zones-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 13%;
+  left: 43%;
+}
+
+.Welfare_Grey_Zones-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 15%;
+  left: 4%;
+}
+
+.Welfare_Grey_Zones-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 15%;
+  left: 16%;
+}
+
+.Welfare_Grey_Zones-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 69%;
+  left: 3%;
+}
+
+.Welfare_Grey_Zones-5 {
+  position: absolute;
+  z-index: 9999;
+  top: 70%;
+  left: 16%;
+}
+
+.Welfare_Grey_Zones-6 {
+  position: absolute;
+  z-index: 9999;
+  top: 69%;
+  left: 29%;
+}
+
+.Welfare_Grey_Zones-7 {
+  position: absolute;
+  z-index: 9999;
+  top: 59%;
+  left: 38%;
+}
+
+.Welfare_Grey_Zones-8 {
+  position: absolute;
+  z-index: 9999;
+  top: 81%;
+  left: 49%;
+}
+
+.Welfare_Grey_Zones-9 {
+  position: absolute;
+  z-index: 9999;
+  top: 89%;
+  left: 23%;
+}
+
+.Welfare_Grey_Zones-10 {
+  position: absolute;
+  z-index: 9999;
+  top: 58%;
+  left: 69%;
+}
+
+.Welfare_Grey_Zones-11 {
+  position: absolute;
+  z-index: 9999;
+  top: 65%;
+  left: 78%;
+}
+
+.Welfare_Grey_Zones-12 {
+  position: absolute;
+  z-index: 9999;
+  top: 76%;
+  left: 76%;
+}
+
+.Welfare_Grey_Zones-13 {
+  position: absolute;
+  z-index: 9999;
+  top: 69%;
+  left: 89%;
+}
+
+.Welfare_Grey_Zones-14 {
+  position: absolute;
+  z-index: 9999;
+  top: 90%;
+  left: 71%;
+}
+
+/* / end of Welfare / */
+
+/* / start of Roads / */
+
+/* / / start of Roads / / */
+
+.M3MA_Roads_Zones-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 6%;
+  left: 5%;
+}
+
+.M3MA_Roads_Zones-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 5.5%;
+  left: 22%;
+}
+
+.M3MA_Roads_Zones-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 5.5%;
+  left: 53%;
+}
+
+.M3MA_Roads_Zones-4 {
+  position: absolute;
+  z-index: 9999;
+  top: 5.7%;
+  left: 70%;
+}
+
+.M3MA_Roads_Zones-5 {
+  position: absolute;
+  z-index: 9999;
+  top: 6.5%;
+  right: -2%;
+}
+
+.M3MA_Roads_Zones-6 {
+  position: absolute;
+  z-index: 9999;
+  top: 5.7%;
+  right: -16%;
+}
+
+.M3MA_Roads_Zones-7 {
+  position: absolute;
+  z-index: 9999;
+  top: 5.7%;
+  right: -39%;
+}
+
+.M3MA_Roads_Zones-8 {
+  position: absolute;
+  z-index: 9999;
+  top: 5.5%;
+  right: -58%;
+}
+
+.M3MA_Roads_Zones-9 {
+  position: absolute;
+  z-index: 9999;
+  top: 5.7%;
+  right: -86%;
+}
+
+.M3MA_Roads_Zones-10 {
+  position: absolute;
+  z-index: 9999;
+  top: 17%;
+  left: 61%;
+}
+
+.M3MA_Roads_Zones-11 {
+  position: absolute;
+  z-index: 9999;
+  top: 33.5%;
+  left: 61%;
+}
+
+.M3MA_Roads_Zones-12 {
+  position: absolute;
+  z-index: 9999;
+  top: 26%;
+  left: 7%;
+}
+
+.M3MA_Roads_Zones-13 {
+  position: absolute;
+  z-index: 9999;
+  top: 16.4%;
+  right: -2.5%;
+}
+
+.M3MA_Roads_Zones-14 {
+  position: absolute;
+  z-index: 9999;
+  top: 18.2%;
+  right: -16%;
+}
+
+.M3MA_Roads_Zones-15 {
+  position: absolute;
+  z-index: 9999;
+  top: 16%;
+  right: -46%;
+}
+
+.M3MA_Roads_Zones-16 {
+  position: absolute;
+  z-index: 9999;
+  top: 31.5%;
+  right: -2%;
+}
+
+.M3MA_Roads_Zones-17 {
+  position: absolute;
+  z-index: 9999;
+  top: 31%;
+  right: -46%;
+}
+
+.M3MA_Roads_Zones-18 {
+  position: absolute;
+  z-index: 9999;
+  top: 26%;
+  right: -94%;
+}
+
+.M3MA_Roads_Zones-19 {
+  position: absolute;
+  z-index: 9999;
+  top: 41.3%;
+  left: 6.5%;
+}
+
+.M3MA_Roads_Zones-20 {
+  position: absolute;
+  z-index: 9999;
+  top: 39%;
+  left: 25%;
+}
+
+.M3MA_Roads_Zones-21 {
+  position: absolute;
+  z-index: 9999;
+  top: 39%;
+  left: 53%;
+}
+
+.M3MA_Roads_Zones-22 {
+  position: absolute;
+  z-index: 9999;
+  top: 39%;
+  left: 71%;
+}
+
+.M3MA_Roads_Zones-23 {
+  position: absolute;
+  z-index: 9999;
+  top: 39%;
+  left: 92%;
+}
+
+.M3MA_Roads_Zones-24 {
+  position: absolute;
+  z-index: 9999;
+  top: 39.2%;
+  right: -16%;
+}
+
+.M3MA_Roads_Zones-25 {
+  position: absolute;
+  z-index: 9999;
+  top: 39%;
+  right: -39%;
+}
+
+.M3MA_Roads_Zones-26 {
+  position: absolute;
+  z-index: 9999;
+  top: 39%;
+  right: -63%;
+}
+
+.M3MA_Roads_Zones-27 {
+  position: absolute;
+  z-index: 9999;
+  top: 39%;
+  right: -85%;
+}
+
+.M3MA_Roads_Zones-28 {
+  position: absolute;
+  z-index: 9999;
+  top: 63%;
+  right: -75%;
+}
+
+.M3MA_Roads_Zones-29 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 19.7%;
+  right: -44%;
+}
+
+.M3MA_Roads_Zones-30 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 7%;
+  right: -32%;
+}
+
+.M3MA_Roads_Zones-31 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 19.8%;
+  left: 72%;
+}
+
+.M3MA_Roads_Zones-32 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 21%;
+  left: 9%;
+}
+
+.M3MA_Roads_Zones-33 {
+  position: absolute;
+  z-index: 9999;
+  top: 60.6%;
+  left: 6.6%;
+}
+
+.Laydown-20-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 60.6%;
+  left: 35%;
+}
+
+.Laydown-30-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 65.6%;
+  left: 29%;
+}
+
+.Laydown-40-1 {
+  position: absolute;
+  z-index: 9999;
+  top: 13%;
+  left: 7%;
+}
+
+.Laydown-40-2 {
+  position: absolute;
+  z-index: 9999;
+  top: 28%;
+  left: 26%;
+}
+
+.Laydown-40-3 {
+  position: absolute;
+  z-index: 9999;
+  top: 53%;
+  left: 40%;
+}
+
+.Laydown-40-4 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 16%;
+  right: 39%;
+}
+
+.Laydown-40-5 {
+  position: absolute;
+  z-index: 9999;
+  bottom: 33%;
+  right: 19%;
+}
+
+.Laydown-40-6 {
+  position: absolute;
+  z-index: 9999;
+  top: 29%;
+  right: 9%;
+}
+
+.Laydown-40-7 {
+  position: absolute;
+  z-index: 9999;
+  top: 16%;
+  left: 22%;
+}
+
+.Laydown-40-8 {
+  position: absolute;
+  z-index: 9999;
+  top: 20%;
+  left: 38%;
+}
+
+.Laydown-40-9 {
+  position: absolute;
+  z-index: 9999;
+  top: 20%;
+  left: 59%;
+}
+
+.Laydown-40-10 {
+  position: absolute;
+  z-index: 9999;
+  top: 20%;
+  right: 16%;
+}
+
+.Laydown-40-11 {
+  position: absolute;
+  z-index: 9999;
+  top: 40%;
+  left: 42%;
+
+}
+
+.Laydown-40-12 {
+  position: absolute;
+  z-index: 9999;
+  top: 45%;
+  left: 57%;
+}
+
+.Laydown-40-13 {
+  position: absolute;
+  z-index: 9999;
+  top: 43%;
+  right: 25%;
+
+}
 
 /* / end of Roads / */
 
@@ -4396,14 +4890,14 @@
   position: absolute;
   z-index: 9999;
   top: 14%;
-  right: -5%;
+  right: 5%;
 }
 
 .MA-zone40_2A_1-3 {
   position: absolute;
   z-index: 9999;
   top: 23%;
-  right: -20%;
+  right: 20%;
 }
 
 .MA-zone40_2A_1-4 {
