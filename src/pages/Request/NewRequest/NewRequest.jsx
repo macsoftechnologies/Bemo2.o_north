@@ -50,7 +50,39 @@ const MECHANICAL_WORKS = [
   { id: "M4", name: "Valves installation" }
 ];
 
+const ELECTRICAL_WORKS_SELECT = [
+  { id: "1", ElectricalWorksval: "Yes" },
+  { id: "0", ElectricalWorksval: "No" }
+];
+
+const ENERGISING_EQUIPMENT_SELECT = [
+  { id: "1", EnergisingEquipmentval: "Yes" },
+  { id: "0", EnergisingEquipmentval: "No" }
+];
+
+const ISOLATING_LIVE_SELECT = [
+  { id: "1", IsolatingLiveval: "Yes" },
+  { id: "0", IsolatingLiveval: "No" }
+];
+
+const WORKING_NEAR_LIVE_SELECT = [
+  { id: "1", WorkingNearLiveval: "Yes" },
+  { id: "0", WorkingNearLiveval: "No" }
+];
+
+const MECHANICAL_WORKS_SELECT = [
+  { id: "1", MechanicalWorksval: "Yes" },
+  { id: "0", MechanicalWorksval: "No" }
+];
+
+const TESTINGS_SELECT = [
+  { id: "1", TESTINGsval: "Yes" },
+  { id: "0", TESTINGsval: "No" }
+];
+
 function NewRequest() {
+  const shouldShowElectricianCert = () => false;
+
   const [building, setBuilding] = useState("");
   const [level, setLevel] = useState("");
   const [isnewrequestcreated, setIsnewrequestcreated] = useState(false);
@@ -187,6 +219,46 @@ function NewRequest() {
     floatLabel85: "",
     floatLabel86: "",
     floatLabel87: "",
+    // Pressurization Power On fields
+    Poweron: "0",
+    EnergisingEquipment: "0",
+    IsolatingLive: "0",
+    WorkingNearLive: "0",
+    floatLabel88: "",
+    floatLabel89: "",
+    floatLabel90: "",
+    floatLabel110: "",
+    floatLabel91: "",
+    floatLabel92: "",
+    floatLabel93: "",
+    floatLabel94: "",
+    floatLabel111: "",
+    floatLabel112: "",
+    floatLabel113: "",
+    floatLabel114: "",
+    floatLabel115: "",
+    floatLabel116: "",
+    floatLabel117: "",
+    floatLabel118: "",
+    floatLabel119: "",
+    floatLabel120: "",
+    floatLabel121: "",
+    floatLabel122: "",
+    floatLabel123: "",
+    floatLabel124: "",
+    floatLabel125: "",
+    floatLabel126: "",
+    floatLabel127: "",
+    // Pressurization fields
+    Pressurization: "0",
+    floatLabel95: "",
+    floatLabel96: "",
+    floatLabel97: "",
+    mc_number_text: "",
+    floatLabel98: "",
+    floatLabel99: "",
+    floatLabel100: "",
+    floatLabel101: "",
     // Pressure Testing
     TESTINGs: "0",
     floatLabel102: "",
@@ -1529,122 +1601,569 @@ function NewRequest() {
               </div>
             )}
 
+            {/* Pressurization power on dropdown */}
+            {formData.permit_type === "Commissioning" && !shouldShowElectricianCert() && (
+              <>
+                <div style={{ display: "flex", gap: "16px", marginBottom: "20px", alignItems: "center", marginTop: "20px" }}>
+                  <div style={{ width: "64px", height: "64px", flexShrink: 0, background: "#1f2937", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <img src="/src/assets/images/logos/electrical_works.png" alt="electrical_works" style={{ width: "40px", height: "40px", objectFit: "contain" }} />
+                  </div>
+                  <div className="df-field" style={{ flex: 1 }}>
+                    <label className="df-label">Energising, Isolating and Working on Live Electrical Systems</label>
+                    <select
+                      className="df-select"
+                      value={formData.Poweron}
+                      onChange={(e) => handleFieldChange("Poweron", e.target.value)}
+                    >
+                      <option value="">Select Option</option>
+                      {ELECTRICAL_WORKS_SELECT.map((tech) => (
+                        <option key={tech.id} value={tech.id}>
+                          {tech.ElectricalWorksval}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {formData.Poweron === "1" && (
+                  <div className="conditional-fields-block" style={{ marginBottom: "20px" }}>
+                    {/* Energising Electrical Equipment */}
+                    <div style={{ display: "flex", gap: "16px", marginBottom: "20px", alignItems: "center" }}>
+                      <div style={{ width: "64px", height: "64px", flexShrink: 0, background: "#1f2937", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <img src="/src/assets/images/logos/electrical_works.png" alt="electrical_works" style={{ width: "40px", height: "40px", objectFit: "contain" }} />
+                      </div>
+                      <div className="df-field" style={{ flex: 1 }}>
+                        <label className="df-label">Energising Electrical Equipment</label>
+                        <select
+                          className="df-select"
+                          value={formData.EnergisingEquipment}
+                          onChange={(e) => handleFieldChange("EnergisingEquipment", e.target.value)}
+                        >
+                          <option value="">Select Option</option>
+                          {ENERGISING_EQUIPMENT_SELECT.map((tech) => (
+                            <option key={tech.id} value={tech.id}>
+                              {tech.EnergisingEquipmentval}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    {formData.EnergisingEquipment === "1" && (
+                      <div className="conditional-fields-block" style={{ marginBottom: "20px", paddingLeft: "16px", borderLeft: "3px solid #10b981" }}>
+                        <div className="checklist-item">
+                          <p className="checklist-question">Is the responsible for the area informed?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel88" value="1" checked={formData.floatLabel88 === "1"} onChange={(e) => handleFieldChange("floatLabel88", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel88" value="0" checked={formData.floatLabel88 === "0"} onChange={(e) => handleFieldChange("floatLabel88", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel88" value="2" checked={formData.floatLabel88 === "2"} onChange={(e) => handleFieldChange("floatLabel88", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Have you completed a risk assessment?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel89" value="1" checked={formData.floatLabel89 === "1"} onChange={(e) => handleFieldChange("floatLabel89", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel89" value="0" checked={formData.floatLabel89 === "0"} onChange={(e) => handleFieldChange("floatLabel89", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel89" value="2" checked={formData.floatLabel89 === "2"} onChange={(e) => handleFieldChange("floatLabel89", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Barriers & Signage in place?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel90" value="1" checked={formData.floatLabel90 === "1"} onChange={(e) => handleFieldChange("floatLabel90", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel90" value="0" checked={formData.floatLabel90 === "0"} onChange={(e) => handleFieldChange("floatLabel90", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel90" value="2" checked={formData.floatLabel90 === "2"} onChange={(e) => handleFieldChange("floatLabel90", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Arc flash boundary and PPE evaluated?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel110" value="1" checked={formData.floatLabel110 === "1"} onChange={(e) => handleFieldChange("floatLabel110", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel110" value="0" checked={formData.floatLabel110 === "0"} onChange={(e) => handleFieldChange("floatLabel110", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel110" value="2" checked={formData.floatLabel110 === "2"} onChange={(e) => handleFieldChange("floatLabel110", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Have all the cables that need to be energized been tested?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel91" value="1" checked={formData.floatLabel91 === "1"} onChange={(e) => handleFieldChange("floatLabel91", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel91" value="0" checked={formData.floatLabel91 === "0"} onChange={(e) => handleFieldChange("floatLabel91", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel91" value="2" checked={formData.floatLabel91 === "2"} onChange={(e) => handleFieldChange("floatLabel91", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Have all punches been closed?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel92" value="1" checked={formData.floatLabel92 === "1"} onChange={(e) => handleFieldChange("floatLabel92", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel92" value="0" checked={formData.floatLabel92 === "0"} onChange={(e) => handleFieldChange("floatLabel92", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel92" value="2" checked={formData.floatLabel92 === "2"} onChange={(e) => handleFieldChange("floatLabel92", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Has the EIC line walk taken place?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel93" value="1" checked={formData.floatLabel93 === "1"} onChange={(e) => handleFieldChange("floatLabel93", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel93" value="0" checked={formData.floatLabel93 === "0"} onChange={(e) => handleFieldChange("floatLabel93", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel93" value="2" checked={formData.floatLabel93 === "2"} onChange={(e) => handleFieldChange("floatLabel93", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Have you Informed and Aligned with EL LOTO Team and provided them with an energisation request form?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel94" value="1" checked={formData.floatLabel94 === "1"} onChange={(e) => handleFieldChange("floatLabel94", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel94" value="0" checked={formData.floatLabel94 === "0"} onChange={(e) => handleFieldChange("floatLabel94", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel94" value="2" checked={formData.floatLabel94 === "2"} onChange={(e) => handleFieldChange("floatLabel94", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Isolating Live Electrical Systems */}
+                    <div style={{ display: "flex", gap: "16px", marginBottom: "20px", alignItems: "center", marginTop: "20px" }}>
+                      <div style={{ width: "64px", height: "64px", flexShrink: 0, background: "#1f2937", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <img src="/src/assets/images/logos/electrical_works.png" alt="electrical_works" style={{ width: "40px", height: "40px", objectFit: "contain" }} />
+                      </div>
+                      <div className="df-field" style={{ flex: 1 }}>
+                        <label className="df-label">Isolating Live Electrical Systems for Maintenance or Modification</label>
+                        <select
+                          className="df-select"
+                          value={formData.IsolatingLive}
+                          onChange={(e) => handleFieldChange("IsolatingLive", e.target.value)}
+                        >
+                          <option value="">Select Option</option>
+                          {ISOLATING_LIVE_SELECT.map((tech) => (
+                            <option key={tech.id} value={tech.id}>
+                              {tech.IsolatingLiveval}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    {formData.IsolatingLive === "1" && (
+                      <div className="conditional-fields-block" style={{ marginBottom: "20px", paddingLeft: "16px", borderLeft: "3px solid #10b981" }}>
+                        <div className="checklist-item">
+                          <p className="checklist-question">Is the responsible for the area informed?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel111" value="1" checked={formData.floatLabel111 === "1"} onChange={(e) => handleFieldChange("floatLabel111", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel111" value="0" checked={formData.floatLabel111 === "0"} onChange={(e) => handleFieldChange("floatLabel111", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel111" value="2" checked={formData.floatLabel111 === "2"} onChange={(e) => handleFieldChange("floatLabel111", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Has a Risk Assessment been completed?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel112" value="1" checked={formData.floatLabel112 === "1"} onChange={(e) => handleFieldChange("floatLabel112", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel112" value="0" checked={formData.floatLabel112 === "0"} onChange={(e) => handleFieldChange("floatLabel112", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel112" value="2" checked={formData.floatLabel112 === "2"} onChange={(e) => handleFieldChange("floatLabel112", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Have C&Q LOTO been informed and tasks co-ordinated for shutdown work?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel113" value="1" checked={formData.floatLabel113 === "1"} onChange={(e) => handleFieldChange("floatLabel113", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel113" value="0" checked={formData.floatLabel113 === "0"} onChange={(e) => handleFieldChange("floatLabel113", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel113" value="2" checked={formData.floatLabel113 === "2"} onChange={(e) => handleFieldChange("floatLabel113", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Have C&Q LOTO been provided marked up single line diagrams/electrical drawings?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel114" value="1" checked={formData.floatLabel114 === "1"} onChange={(e) => handleFieldChange("floatLabel114", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel114" value="0" checked={formData.floatLabel114 === "0"} onChange={(e) => handleFieldChange("floatLabel114", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel114" value="2" checked={formData.floatLabel114 === "2"} onChange={(e) => handleFieldChange("floatLabel114", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Has a De-Energisation Request form and supporting documentation been provided to C&Q LOTO?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel115" value="1" checked={formData.floatLabel115 === "1"} onChange={(e) => handleFieldChange("floatLabel115", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel115" value="0" checked={formData.floatLabel115 === "0"} onChange={(e) => handleFieldChange("floatLabel115", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel115" value="2" checked={formData.floatLabel115 === "2"} onChange={(e) => handleFieldChange("floatLabel115", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Are all barriers, signage and PPE prepared for the task?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel116" value="1" checked={formData.floatLabel116 === "1"} onChange={(e) => handleFieldChange("floatLabel116", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel116" value="0" checked={formData.floatLabel116 === "0"} onChange={(e) => handleFieldChange("floatLabel116", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel116" value="2" checked={formData.floatLabel116 === "2"} onChange={(e) => handleFieldChange("floatLabel116", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Has absence of voltage been verified and proven dead?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel117" value="1" checked={formData.floatLabel117 === "1"} onChange={(e) => handleFieldChange("floatLabel117", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel117" value="0" checked={formData.floatLabel117 === "0"} onChange={(e) => handleFieldChange("floatLabel117", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel117" value="2" checked={formData.floatLabel117 === "2"} onChange={(e) => handleFieldChange("floatLabel117", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Has stored energy been discharged?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel118" value="1" checked={formData.floatLabel118 === "1"} onChange={(e) => handleFieldChange("floatLabel118", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel118" value="0" checked={formData.floatLabel118 === "0"} onChange={(e) => handleFieldChange("floatLabel118", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel118" value="2" checked={formData.floatLabel118 === "2"} onChange={(e) => handleFieldChange("floatLabel118", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Have any secondary or back up power supplies been confirmed and accounted for?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel119" value="1" checked={formData.floatLabel119 === "1"} onChange={(e) => handleFieldChange("floatLabel119", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel119" value="0" checked={formData.floatLabel119 === "0"} onChange={(e) => handleFieldChange("floatLabel119", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel119" value="2" checked={formData.floatLabel119 === "2"} onChange={(e) => handleFieldChange("floatLabel119", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Working on OR near live electrical systems */}
+                    <div style={{ display: "flex", gap: "16px", marginBottom: "20px", alignItems: "center", marginTop: "20px" }}>
+                      <div style={{ width: "64px", height: "64px", flexShrink: 0, background: "#1f2937", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <img src="/src/assets/images/logos/electrical_works.png" alt="electrical_works" style={{ width: "40px", height: "40px", objectFit: "contain" }} />
+                      </div>
+                      <div className="df-field" style={{ flex: 1 }}>
+                        <label className="df-label">Working on OR near live electrical systems (Live testing, commissioning, fault finding, working inside live enclosures)</label>
+                        <select
+                          className="df-select"
+                          value={formData.WorkingNearLive}
+                          onChange={(e) => handleFieldChange("WorkingNearLive", e.target.value)}
+                        >
+                          <option value="">Select Option</option>
+                          {WORKING_NEAR_LIVE_SELECT.map((tech) => (
+                            <option key={tech.id} value={tech.id}>
+                              {tech.WorkingNearLiveval}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    {formData.WorkingNearLive === "1" && (
+                      <div className="conditional-fields-block" style={{ marginBottom: "20px", paddingLeft: "16px", borderLeft: "3px solid #10b981" }}>
+                        <div className="checklist-item">
+                          <p className="checklist-question">Live work is unavoidable and justified?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel120" value="1" checked={formData.floatLabel120 === "1"} onChange={(e) => handleFieldChange("floatLabel120", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel120" value="0" checked={formData.floatLabel120 === "0"} onChange={(e) => handleFieldChange("floatLabel120", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel120" value="2" checked={formData.floatLabel120 === "2"} onChange={(e) => handleFieldChange("floatLabel120", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">De-energisation is not reasonably practicable?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel121" value="1" checked={formData.floatLabel121 === "1"} onChange={(e) => handleFieldChange("floatLabel121", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel121" value="0" checked={formData.floatLabel121 === "0"} onChange={(e) => handleFieldChange("floatLabel121", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel121" value="2" checked={formData.floatLabel121 === "2"} onChange={(e) => handleFieldChange("floatLabel121", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Live work authorised by electrical responsible person?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel122" value="1" checked={formData.floatLabel122 === "1"} onChange={(e) => handleFieldChange("floatLabel122", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel122" value="0" checked={formData.floatLabel122 === "0"} onChange={(e) => handleFieldChange("floatLabel122", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel122" value="2" checked={formData.floatLabel122 === "2"} onChange={(e) => handleFieldChange("floatLabel122", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Risk assessment has been completed?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel123" value="1" checked={formData.floatLabel123 === "1"} onChange={(e) => handleFieldChange("floatLabel123", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel123" value="0" checked={formData.floatLabel123 === "0"} onChange={(e) => handleFieldChange("floatLabel123", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel123" value="2" checked={formData.floatLabel123 === "2"} onChange={(e) => handleFieldChange("floatLabel123", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Arc flash boundary and PPE evaluated?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel124" value="1" checked={formData.floatLabel124 === "1"} onChange={(e) => handleFieldChange("floatLabel124", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel124" value="0" checked={formData.floatLabel124 === "0"} onChange={(e) => handleFieldChange("floatLabel124", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel124" value="2" checked={formData.floatLabel124 === "2"} onChange={(e) => handleFieldChange("floatLabel124", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Barriers and Signage in place?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel125" value="1" checked={formData.floatLabel125 === "1"} onChange={(e) => handleFieldChange("floatLabel125", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel125" value="0" checked={formData.floatLabel125 === "0"} onChange={(e) => handleFieldChange("floatLabel125", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel125" value="2" checked={formData.floatLabel125 === "2"} onChange={(e) => handleFieldChange("floatLabel125", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Insulated tools and approved test equipment to be used?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel126" value="1" checked={formData.floatLabel126 === "1"} onChange={(e) => handleFieldChange("floatLabel126", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel126" value="0" checked={formData.floatLabel126 === "0"} onChange={(e) => handleFieldChange("floatLabel126", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel126" value="2" checked={formData.floatLabel126 === "2"} onChange={(e) => handleFieldChange("floatLabel126", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+
+                        <div className="checklist-item">
+                          <p className="checklist-question">Work will always be carried out with a second person to assist in the event of an emergency?</p>
+                          <div className="radio-group">
+                            <label><input type="radio" name="floatLabel127" value="1" checked={formData.floatLabel127 === "1"} onChange={(e) => handleFieldChange("floatLabel127", e.target.value)} /> Yes</label>
+                            <label><input type="radio" name="floatLabel127" value="0" checked={formData.floatLabel127 === "0"} onChange={(e) => handleFieldChange("floatLabel127", e.target.value)} /> No</label>
+                            <label><input type="radio" name="floatLabel127" value="2" checked={formData.floatLabel127 === "2"} onChange={(e) => handleFieldChange("floatLabel127", e.target.value)} /> N/A</label>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* Pressurization starts */}
+            {formData.permit_type === "Commissioning" && !shouldShowElectricianCert() && (
+              <>
+                <div style={{ display: "flex", gap: "16px", marginBottom: "20px", alignItems: "center", marginTop: "20px" }}>
+                  <div style={{ width: "64px", height: "64px", flexShrink: 0, background: "#1f2937", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <img src="/src/assets/images/logos/mechanical1.png" alt="mechanical1" style={{ width: "40px", height: "40px", objectFit: "contain" }} />
+                  </div>
+                  <div className="df-field" style={{ flex: 1 }}>
+                    <label className="df-label">Energization of Mechanical equipment</label>
+                    <select
+                      className="df-select"
+                      value={formData.Pressurization}
+                      onChange={(e) => handleFieldChange("Pressurization", e.target.value)}
+                    >
+                      <option value="">Select Option</option>
+                      {MECHANICAL_WORKS_SELECT.map((tech) => (
+                        <option key={tech.id} value={tech.id}>
+                          {tech.MechanicalWorksval}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {formData.Pressurization === "1" && (
+                  <div className="conditional-fields-block" style={{ marginBottom: "20px" }}>
+                    <div className="checklist-item">
+                      <p className="checklist-question">Pressure test performed and approved?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel95" value="1" checked={formData.floatLabel95 === "1"} onChange={(e) => handleFieldChange("floatLabel95", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel95" value="0" checked={formData.floatLabel95 === "0"} onChange={(e) => handleFieldChange("floatLabel95", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel95" value="2" checked={formData.floatLabel95 === "2"} onChange={(e) => handleFieldChange("floatLabel95", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
+
+                    <div className="checklist-item">
+                      <p className="checklist-question">Flushing approved?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel96" value="1" checked={formData.floatLabel96 === "1"} onChange={(e) => handleFieldChange("floatLabel96", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel96" value="0" checked={formData.floatLabel96 === "0"} onChange={(e) => handleFieldChange("floatLabel96", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel96" value="2" checked={formData.floatLabel96 === "2"} onChange={(e) => handleFieldChange("floatLabel96", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
+
+                    <div className="checklist-item">
+                      <p className="checklist-question">MC approved?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel97" value="1" checked={formData.floatLabel97 === "1"} onChange={(e) => handleFieldChange("floatLabel97", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel97" value="0" checked={formData.floatLabel97 === "0"} onChange={(e) => handleFieldChange("floatLabel97", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel97" value="2" checked={formData.floatLabel97 === "2"} onChange={(e) => handleFieldChange("floatLabel97", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
+
+                    {formData.floatLabel97 === "1" && (
+                      <div className="df-field" style={{ marginTop: "12px", marginBottom: "16px", paddingLeft: "16px" }}>
+                        <label className="df-label">MC Number <span className="df-required">*</span></label>
+                        <input
+                          type="text"
+                          className="df-input"
+                          placeholder="MC number Required"
+                          value={formData.mc_number_text}
+                          onChange={(e) => handleFieldChange("mc_number_text", e.target.value)}
+                        />
+                      </div>
+                    )}
+
+                    <div className="checklist-item">
+                      <p className="checklist-question">Walkdown with Visual inspection performed?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel98" value="1" checked={formData.floatLabel98 === "1"} onChange={(e) => handleFieldChange("floatLabel98", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel98" value="0" checked={formData.floatLabel98 === "0"} onChange={(e) => handleFieldChange("floatLabel98", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel98" value="2" checked={formData.floatLabel98 === "2"} onChange={(e) => handleFieldChange("floatLabel98", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
+
+                    <div className="checklist-item">
+                      <p className="checklist-question">LOTO plan approved and installed by LOTO officer?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel99" value="1" checked={formData.floatLabel99 === "1"} onChange={(e) => handleFieldChange("floatLabel99", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel99" value="0" checked={formData.floatLabel99 === "0"} onChange={(e) => handleFieldChange("floatLabel99", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel99" value="2" checked={formData.floatLabel99 === "2"} onChange={(e) => handleFieldChange("floatLabel99", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
+
+                    <div className="checklist-item">
+                      <p className="checklist-question">Ensure Safety Valves follow Media Code?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel100" value="1" checked={formData.floatLabel100 === "1"} onChange={(e) => handleFieldChange("floatLabel100", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel100" value="0" checked={formData.floatLabel100 === "0"} onChange={(e) => handleFieldChange("floatLabel100", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel100" value="2" checked={formData.floatLabel100 === "2"} onChange={(e) => handleFieldChange("floatLabel100", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
+
+                    <div className="checklist-item">
+                      <p className="checklist-question">C&Q Safety signs are in place?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel101" value="1" checked={formData.floatLabel101 === "1"} onChange={(e) => handleFieldChange("floatLabel101", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel101" value="0" checked={formData.floatLabel101 === "0"} onChange={(e) => handleFieldChange("floatLabel101", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel101" value="2" checked={formData.floatLabel101 === "2"} onChange={(e) => handleFieldChange("floatLabel101", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+
             {/* Pressure Testing dropdown */}
-            <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-              <img src="/src/assets/images/logos/testingequipment.png" alt="testingequipment" style={{ width: "64px", height: "64px", borderRadius: "50%", objectFit: "contain", flexShrink: 0 }} />
-              <div className="df-field" style={{ flex: 1 }}>
-                <label className="df-label">PRESSURE TESTING OF EQUIPMENT REQUIRED?</label>
-                <select
-                  className="df-select"
-                  value={formData.TESTINGs}
-                  onChange={(e) => handleFieldChange("TESTINGs", e.target.value)}
-                >
-                  <option value="0">No</option>
-                  <option value="1">Yes</option>
-                </select>
-              </div>
-            </div>
-
-            {formData.TESTINGs === "1" && (
-              <div className="conditional-fields-block" style={{ marginBottom: "20px", marginTop: "20px" }}>
-                <div className="checklist-item">
-                  <p className="checklist-question">Linewalk of the pipework/equipment done?</p>
-                  <div className="radio-group">
-                    <label><input type="radio" name="floatLabel102" value="1" checked={formData.floatLabel102 === "1"} onChange={(e) => handleFieldChange("floatLabel102", e.target.value)} /> Yes</label>
-                    <label><input type="radio" name="floatLabel102" value="0" checked={formData.floatLabel102 === "0"} onChange={(e) => handleFieldChange("floatLabel102", e.target.value)} /> No</label>
-                    <label><input type="radio" name="floatLabel102" value="2" checked={formData.floatLabel102 === "2"} onChange={(e) => handleFieldChange("floatLabel102", e.target.value)} /> N/A</label>
+            {formData.permit_type === "Commissioning" && !shouldShowElectricianCert() && (
+              <>
+                <div style={{ display: "flex", gap: "16px", alignItems: "center", marginTop: "20px" }}>
+                  <img src="/src/assets/images/logos/testingequipment.png" alt="testingequipment" style={{ width: "64px", height: "64px", borderRadius: "50%", objectFit: "contain", flexShrink: 0 }} />
+                  <div className="df-field" style={{ flex: 1 }}>
+                    <label className="df-label">PRESSURE TESTING OF EQUIPMENT REQUIRED?</label>
+                    <select
+                      className="df-select"
+                      value={formData.TESTINGs}
+                      onChange={(e) => handleFieldChange("TESTINGs", e.target.value)}
+                    >
+                      <option value="">Select Option</option>
+                      {TESTINGS_SELECT.map((tech) => (
+                        <option key={tech.id} value={tech.id}>
+                          {tech.TESTINGsval}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
-                <div className="checklist-item">
-                  <p className="checklist-question">Pressure test is coordinated with NNE C&Q?</p>
-                  <div className="radio-group">
-                    <label><input type="radio" name="floatLabel103" value="1" checked={formData.floatLabel103 === "1"} onChange={(e) => handleFieldChange("floatLabel103", e.target.value)} /> Yes</label>
-                    <label><input type="radio" name="floatLabel103" value="0" checked={formData.floatLabel103 === "0"} onChange={(e) => handleFieldChange("floatLabel103", e.target.value)} /> No</label>
-                    <label><input type="radio" name="floatLabel103" value="2" checked={formData.floatLabel103 === "2"} onChange={(e) => handleFieldChange("floatLabel103", e.target.value)} /> N/A</label>
-                  </div>
-                </div>
+                {formData.TESTINGs === "1" && (
+                  <div className="conditional-fields-block" style={{ marginBottom: "20px", marginTop: "20px" }}>
+                    <div className="checklist-item">
+                      <p className="checklist-question">Linewalk of the pipework/equipment done?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel102" value="1" checked={formData.floatLabel102 === "1"} onChange={(e) => handleFieldChange("floatLabel102", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel102" value="0" checked={formData.floatLabel102 === "0"} onChange={(e) => handleFieldChange("floatLabel102", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel102" value="2" checked={formData.floatLabel102 === "2"} onChange={(e) => handleFieldChange("floatLabel102", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
 
-                <div className="checklist-item">
-                  <p className="checklist-question">Is the pipework/equipment MIC? (Mechanical Installation Complete)?</p>
-                  <div className="radio-group">
-                    <label><input type="radio" name="floatLabel104" value="1" checked={formData.floatLabel104 === "1"} onChange={(e) => handleFieldChange("floatLabel104", e.target.value)} /> Yes</label>
-                    <label><input type="radio" name="floatLabel104" value="0" checked={formData.floatLabel104 === "0"} onChange={(e) => handleFieldChange("floatLabel104", e.target.value)} /> No</label>
-                    <label><input type="radio" name="floatLabel104" value="2" checked={formData.floatLabel104 === "2"} onChange={(e) => handleFieldChange("floatLabel104", e.target.value)} /> N/A</label>
-                  </div>
-                </div>
+                    <div className="checklist-item">
+                      <p className="checklist-question">Pressure test is coordinated with NNE C&Q?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel103" value="1" checked={formData.floatLabel103 === "1"} onChange={(e) => handleFieldChange("floatLabel103", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel103" value="0" checked={formData.floatLabel103 === "0"} onChange={(e) => handleFieldChange("floatLabel103", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel103" value="2" checked={formData.floatLabel103 === "2"} onChange={(e) => handleFieldChange("floatLabel103", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
 
-                <div className="checklist-item">
-                  <p className="checklist-question">LOTO plan attached to the work permit?</p>
-                  <div className="radio-group">
-                    <label><input type="radio" name="floatLabel105" value="1" checked={formData.floatLabel105 === "1"} onChange={(e) => handleFieldChange("floatLabel105", e.target.value)} /> Yes</label>
-                    <label><input type="radio" name="floatLabel105" value="0" checked={formData.floatLabel105 === "0"} onChange={(e) => handleFieldChange("floatLabel105", e.target.value)} /> No</label>
-                    <label><input type="radio" name="floatLabel105" value="2" checked={formData.floatLabel105 === "2"} onChange={(e) => handleFieldChange("floatLabel105", e.target.value)} /> N/A</label>
-                  </div>
-                </div>
+                    <div className="checklist-item">
+                      <p className="checklist-question">Is the pipework/equipment MIC? (Mechanical Installation Complete)?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel104" value="1" checked={formData.floatLabel104 === "1"} onChange={(e) => handleFieldChange("floatLabel104", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel104" value="0" checked={formData.floatLabel104 === "0"} onChange={(e) => handleFieldChange("floatLabel104", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel104" value="2" checked={formData.floatLabel104 === "2"} onChange={(e) => handleFieldChange("floatLabel104", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
 
-                <div className="checklist-item">
-                  <p className="checklist-question">Is the exclusion zone calculated and layout attached to work permit?</p>
-                  <div className="radio-group">
-                    <label><input type="radio" name="floatLabel106" value="1" checked={formData.floatLabel106 === "1"} onChange={(e) => handleFieldChange("floatLabel106", e.target.value)} /> Yes</label>
-                    <label><input type="radio" name="floatLabel106" value="0" checked={formData.floatLabel106 === "0"} onChange={(e) => handleFieldChange("floatLabel106", e.target.value)} /> No</label>
-                    <label><input type="radio" name="floatLabel106" value="2" checked={formData.floatLabel106 === "2"} onChange={(e) => handleFieldChange("floatLabel106", e.target.value)} /> N/A</label>
-                  </div>
-                </div>
+                    <div className="checklist-item">
+                      <p className="checklist-question">LOTO plan attached to the work permit?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel105" value="1" checked={formData.floatLabel105 === "1"} onChange={(e) => handleFieldChange("floatLabel105", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel105" value="0" checked={formData.floatLabel105 === "0"} onChange={(e) => handleFieldChange("floatLabel105", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel105" value="2" checked={formData.floatLabel105 === "2"} onChange={(e) => handleFieldChange("floatLabel105", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
 
-                <div className="checklist-item">
-                  <p className="checklist-question">Pneumatic Test?</p>
-                  <div className="radio-group">
-                    <label><input type="radio" name="floatLabel107" disabled={formData.floatLabel108 === "1"} value="1" checked={formData.floatLabel107 === "1"} onChange={(e) => handleFieldChange("floatLabel107", e.target.value)} /> Yes</label>
-                    <label><input type="radio" name="floatLabel107" value="0" checked={formData.floatLabel107 === "0"} onChange={(e) => handleFieldChange("floatLabel107", e.target.value)} /> No</label>
-                    <label><input type="radio" name="floatLabel107" value="2" checked={formData.floatLabel107 === "2"} onChange={(e) => handleFieldChange("floatLabel107", e.target.value)} /> N/A</label>
-                  </div>
-                </div>
+                    <div className="checklist-item">
+                      <p className="checklist-question">Is the exclusion zone calculated and layout attached to work permit?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel106" value="1" checked={formData.floatLabel106 === "1"} onChange={(e) => handleFieldChange("floatLabel106", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel106" value="0" checked={formData.floatLabel106 === "0"} onChange={(e) => handleFieldChange("floatLabel106", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel106" value="2" checked={formData.floatLabel106 === "2"} onChange={(e) => handleFieldChange("floatLabel106", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
 
-                {formData.floatLabel107 === "1" && (
-                  <div className="df-field" style={{ marginTop: "8px", marginBottom: "16px" }}>
-                    <label className="df-label">Pressure of Pneumatic Test (in BarG)</label>
-                    <input
-                      type="text"
-                      className="df-input"
-                      placeholder="Provide the pressure value"
-                      value={formData.pressure_pneumatic}
-                      onChange={(e) => handleFieldChange("pressure_pneumatic", e.target.value)}
-                    />
+                    <div className="checklist-item">
+                      <p className="checklist-question">Pneumatic Test?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel107" disabled={formData.floatLabel108 === "1"} value="1" checked={formData.floatLabel107 === "1"} onChange={(e) => handleFieldChange("floatLabel107", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel107" value="0" checked={formData.floatLabel107 === "0"} onChange={(e) => handleFieldChange("floatLabel107", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel107" value="2" checked={formData.floatLabel107 === "2"} onChange={(e) => handleFieldChange("floatLabel107", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
+
+                    {formData.floatLabel107 === "1" && (
+                      <div className="df-field" style={{ marginTop: "8px", marginBottom: "16px" }}>
+                        <label className="df-label">Pressure of Pneumatic Test (in BarG)</label>
+                        <input
+                          type="text"
+                          className="df-input"
+                          placeholder="Provide the pressure value"
+                          value={formData.pressure_pneumatic}
+                          onChange={(e) => handleFieldChange("pressure_pneumatic", e.target.value)}
+                        />
+                      </div>
+                    )}
+
+                    <div className="checklist-item">
+                      <p className="checklist-question">Hydrostatic test?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel108" disabled={formData.floatLabel107 === "1"} value="1" checked={formData.floatLabel108 === "1"} onChange={(e) => handleFieldChange("floatLabel108", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel108" value="0" checked={formData.floatLabel108 === "0"} onChange={(e) => handleFieldChange("floatLabel108", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel108" value="2" checked={formData.floatLabel108 === "2"} onChange={(e) => handleFieldChange("floatLabel108", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
+
+                    {formData.floatLabel108 === "1" && (
+                      <div className="df-field" style={{ marginTop: "8px", marginBottom: "16px" }}>
+                        <label className="df-label">Pressure of Hydrostatic Test (in BarG)</label>
+                        <input
+                          type="text"
+                          className="df-input"
+                          placeholder="Provide the pressure value"
+                          value={formData.pressure_hydrostatic}
+                          onChange={(e) => handleFieldChange("pressure_hydrostatic", e.target.value)}
+                        />
+                      </div>
+                    )}
+
+                    <div className="checklist-item">
+                      <p className="checklist-question">Safety Valves are calibrated and attached to the Pressure testing rig?</p>
+                      <div className="radio-group">
+                        <label><input type="radio" name="floatLabel109" value="1" checked={formData.floatLabel109 === "1"} onChange={(e) => handleFieldChange("floatLabel109", e.target.value)} /> Yes</label>
+                        <label><input type="radio" name="floatLabel109" value="0" checked={formData.floatLabel109 === "0"} onChange={(e) => handleFieldChange("floatLabel109", e.target.value)} /> No</label>
+                        <label><input type="radio" name="floatLabel109" value="2" checked={formData.floatLabel109 === "2"} onChange={(e) => handleFieldChange("floatLabel109", e.target.value)} /> N/A</label>
+                      </div>
+                    </div>
                   </div>
                 )}
-
-                <div className="checklist-item">
-                  <p className="checklist-question">Hydrostatic test?</p>
-                  <div className="radio-group">
-                    <label><input type="radio" name="floatLabel108" disabled={formData.floatLabel107 === "1"} value="1" checked={formData.floatLabel108 === "1"} onChange={(e) => handleFieldChange("floatLabel108", e.target.value)} /> Yes</label>
-                    <label><input type="radio" name="floatLabel108" value="0" checked={formData.floatLabel108 === "0"} onChange={(e) => handleFieldChange("floatLabel108", e.target.value)} /> No</label>
-                    <label><input type="radio" name="floatLabel108" value="2" checked={formData.floatLabel108 === "2"} onChange={(e) => handleFieldChange("floatLabel108", e.target.value)} /> N/A</label>
-                  </div>
-                </div>
-
-                {formData.floatLabel108 === "1" && (
-                  <div className="df-field" style={{ marginTop: "8px", marginBottom: "16px" }}>
-                    <label className="df-label">Pressure of Hydrostatic Test (in BarG)</label>
-                    <input
-                      type="text"
-                      className="df-input"
-                      placeholder="Provide the pressure value"
-                      value={formData.pressure_hydrostatic}
-                      onChange={(e) => handleFieldChange("pressure_hydrostatic", e.target.value)}
-                    />
-                  </div>
-                )}
-
-                <div className="checklist-item">
-                  <p className="checklist-question">Safety Valves are calibrated and attached to the Pressure testing rig?</p>
-                  <div className="radio-group">
-                    <label><input type="radio" name="floatLabel109" value="1" checked={formData.floatLabel109 === "1"} onChange={(e) => handleFieldChange("floatLabel109", e.target.value)} /> Yes</label>
-                    <label><input type="radio" name="floatLabel109" value="0" checked={formData.floatLabel109 === "0"} onChange={(e) => handleFieldChange("floatLabel109", e.target.value)} /> No</label>
-                    <label><input type="radio" name="floatLabel109" value="2" checked={formData.floatLabel109 === "2"} onChange={(e) => handleFieldChange("floatLabel109", e.target.value)} /> N/A</label>
-                  </div>
-                </div>
-              </div>
+              </>
             )}
           </div>
 
